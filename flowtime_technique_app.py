@@ -4,27 +4,20 @@ import time
 running = False
 BREAK_TIME_MULTIPLIER = 0.2
 
-st.markdown(
-    """
-    <style>
-        div[data-testid="column"]:nth-of-type(1)
-        {
-            # border:1px solid red;
-        } 
+# page config
+st.set_page_config(page_title="Flowtime", page_icon="⏱️")
 
-        div[data-testid="column"]:nth-of-type(2)
-        {
-            # border:1px solid blue;
-            text-align: end;
-        } 
-    </style>
-    """,unsafe_allow_html=True
-)
+# use style.css
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+local_css("style/style.css")
+
 
 def display_formatted_time(time_in_seconds):
     mins, secs = divmod(round(time_in_seconds), 60)
     time_formatted = '{:02d}:{:02d}'.format(mins, secs)
-    st.header(f"{time_formatted}")  # TODO: why formatted string?
+    st.header(time_formatted, anchor=False)
 
 def display_times(time_in_seconds):
     col1, col2 = st.columns(2)
@@ -42,13 +35,12 @@ def count_down(frequency=0.1):
     start_time = time.time()
     end_time = start_time + (time_in_seconds * BREAK_TIME_MULTIPLIER)
     with st.empty():
-        while time_in_seconds > 0 and running:  # TODO: think about and check edge cases
+        while time_in_seconds > 0 and running:  # TODO: check edge cases
             display_times(time_in_seconds / BREAK_TIME_MULTIPLIER)
             time.sleep(frequency)
             time_in_seconds = max(end_time - time.time(), 0)
-            st.session_state["time_in_seconds"] = time_in_seconds / BREAK_TIME_MULTIPLIER   # TODO: is it needed?
-    # display_time(time_in_seconds)
-    # st.write("End of break!")    # TODO: add sound
+            st.session_state["time_in_seconds"] = time_in_seconds / BREAK_TIME_MULTIPLIER
+    # TODO: add sound
     st.balloons()
 
 
