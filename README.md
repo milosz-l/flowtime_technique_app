@@ -1,6 +1,9 @@
 # Flowtime technique app
 It's super simple and completely free app that let's you easily track work time and automatically calculates break time based on flowtime technique.
 
+You can access the app at the following link:
+https://flowtime.streamlit.app/
+
 ## What is the flowtime technique?
 It's an alternative for pomodoro technique, where you work for 25 minutes and take 5 minute breaks. With the flowtime technique, your work intervals and breaks are not scheduled. You simply work until you’re distracted or until you feel like you need a break. It allows you to stay focused longer and get into the flow state.
 
