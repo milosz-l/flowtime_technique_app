@@ -13,6 +13,11 @@ div[data-testid="column"]:nth-of-type(2) {
     visibility: hidden;
 }
 
+.st-bk {
+    height: 10px;
+    /* zoom: 2; */
+}
+
 footer {
     visibility: hidden;
 }
