@@ -1,2 +1,2 @@
 streamlit==1.22.0
-beepy==1.0.7
+beepy
