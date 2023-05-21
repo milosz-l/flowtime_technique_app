@@ -1,5 +1,6 @@
 import streamlit as st
 import time
+from beepy import beep
 
 running = False
 BREAK_TIME_MULTIPLIER = 0.2
@@ -40,8 +41,8 @@ def count_down(frequency=0.1):
             time.sleep(frequency)
             time_in_seconds = max(end_time - time.time(), 0)
             st.session_state["time_in_seconds"] = time_in_seconds / BREAK_TIME_MULTIPLIER
-    # TODO: add sound
     st.balloons()
+    beep(sound='coin')
 
 
 def count_up(frequency=0.1):
